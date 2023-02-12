@@ -22,9 +22,4 @@ public class Student {
     private String address;
     private String contact;
 
-    public Student(String name, String address, String contact) {
-        this.name = name;
-        this.address = address;
-        this.contact = contact;
-    }
 }
