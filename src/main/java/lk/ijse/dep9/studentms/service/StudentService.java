@@ -50,4 +50,15 @@ public class StudentService {
          }.getType());
     }
 
+    public String deleteStudent(StudentDTO studentDTO){
+        if (studentRepo.existsById(studentDTO.getId())){
+            studentRepo.deleteById(studentDTO.getId());
+            return "00";
+        }
+        else {
+            return "01";
+        }
+
+    }
+
 }

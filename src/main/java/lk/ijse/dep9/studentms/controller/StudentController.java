@@ -100,5 +100,30 @@ public class StudentController {
         }
 
     }
+    @DeleteMapping(value = "/deleteStudent")
+    public ResponseEntity deleteStudent(@RequestBody StudentDTO studentDTO){
+        try {
+            if (studentService.deleteStudent(studentDTO).equals("00")){
+                responseDTO.setCode("00");
+                responseDTO.setMessage("Deleted");
+                responseDTO.setContent(studentDTO);
+                return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+            }
+            else {
+                responseDTO.setCode("01");
+                responseDTO.setMessage("Not Found");
+                responseDTO.setContent(studentDTO);
+                return new ResponseEntity(responseDTO, HttpStatus.BAD_REQUEST);
+            }
+
+        }
+        catch (Exception e){
+            responseDTO.setCode("01");
+            responseDTO.setMessage(e.getMessage());
+            responseDTO.setContent(null);
+            return new ResponseEntity(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
 
 }
