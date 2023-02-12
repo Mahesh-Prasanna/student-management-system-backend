@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDTO {
+    private int id;
     private String name;
     private String address;
     private String contact;
